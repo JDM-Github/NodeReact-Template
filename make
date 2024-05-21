@@ -14,5 +14,6 @@ install-backend:
 	cd $(BACKEND_DIR) && npm install nodemon --save-dev
 	cd $(BACKEND_DIR) && npm install express
 	cd $(BACKEND_DIR) && npm install cors
+	cd $(BACKEND_DIR) && npm install mysql2
 
 .PHONY: all install-frontend install-backend

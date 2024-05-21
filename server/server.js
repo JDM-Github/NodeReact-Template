@@ -1,5 +1,6 @@
 const express = require('express');
-// const sql = require('mysql2');
+const sql     = require('mysql2');
+const cors    = require('cors');
 
 const dbConfig = {
 	host: 'localhost',
@@ -7,7 +8,6 @@ const dbConfig = {
 	password: 'root',
 	database: 'WaisDatabase'
 };
-const cors = require('cors');
 
 class MainBackend
 {
@@ -26,15 +26,15 @@ class MainBackend
 
 	initializeSQL()
 	{
-		// this.connection = sql.createConnection(dbConfig);
-		// this.connection.connect((error) => {
-		// 	if (error)
-		// 	{
-		// 		console.error('Error connecting to MySQL database:', error);
-		// 		return;
-		// 	}
-		// 	console.log('Connected to MySQL database');
-		// });
+		this.connection = sql.createConnection(dbConfig);
+		this.connection.connect((error) => {
+			if (error)
+			{
+				console.error('Error connecting to MySQL database:', error);
+				return;
+			}
+			console.log('Connected to MySQL database');
+		});
 	}
 
 	initializeMiddlewares()
@@ -65,12 +65,12 @@ class MainBackend
 
 	setupCloseHandler()
 	{
-		// process.on('SIGINT', () =>
-		// {
-		// 	this.connection.end();
-		// 	console.log('MySQL connection closed');
-		// 	process.exit();
-		// });
+		process.on('SIGINT', () =>
+		{
+			this.connection.end();
+			console.log('MySQL connection closed');
+			process.exit();
+		});
 	}
 }
 
