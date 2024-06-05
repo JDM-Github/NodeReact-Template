@@ -7,6 +7,7 @@ all: install-frontend install-backend
 install-frontend:
 	@echo "Installing frontend dependencies..."
 	cd $(BACKEND_DIR) && npm install react-router-dom
+	cd $(BACKEND_DIR) && npm install sass
 	cd $(BACKEND_DIR) && npm install axios
 
 install-backend:
@@ -16,4 +17,5 @@ install-backend:
 	cd $(BACKEND_DIR) && npm install cors
 	cd $(BACKEND_DIR) && npm install mysql2
 
-.PHONY: all install-frontend install-backend
+
+.PHONY: all install-frontend install-backend test
