@@ -6,7 +6,7 @@ const dbConfig = {
 	host: 'localhost',
 	user: 'root',
 	password: 'root',
-	database: 'WaisDatabase'
+	database: ''
 };
 
 class MainBackend
